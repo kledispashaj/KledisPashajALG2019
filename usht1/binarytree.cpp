@@ -7,7 +7,7 @@ using namespace std;
 
 struct node{
 	string data;
-	node *majte,*djathte,*p;
+	node *left,*right,*p;
 };
 
 node *insertTree(node *T, node *z)
@@ -22,16 +22,16 @@ node *insertTree(node *T, node *z)
 		if(a==0)
 		return T;
 		else if(a<0)
-		x = x->majte;
-		else x = x->djathte;
+		x = x->left;
+		else x = x->right;
 	}
 	z->p = y;
 
 	if(y==NULL)
 		T = z;
 	else if (z->data.compare(y->data)<0) 
-	y->majte = z;
-	else y->djathte = z;
+	y->left = z;
+	else y->right = z;
 
 	return T;
 }
@@ -41,8 +41,8 @@ void paraRendore(node *T)
 	if(T != NULL) {
 		
 		cout<<T->data<<" ";
-		paraRendore(T->majte);
-		paraRendore(T->djathte);
+		paraRendore(T->left);
+		paraRendore(T->right);
 		
 		}
 }
@@ -68,8 +68,8 @@ int main(){
     while (inFile >> x){
        	z = new node;
 		z->data = strip(x);
-		z->majte = NULL;
-		z->djathte = NULL;
+		z->left = NULL;
+		z->right = NULL;
 		z->p = NULL;
 		rrenja= insertTree(rrenja,z);
      }
